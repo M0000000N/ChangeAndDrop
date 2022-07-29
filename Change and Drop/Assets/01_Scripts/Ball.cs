@@ -32,14 +32,6 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        if (StageManager.isStart)
-        {
-            //_trailRenderer.isVisible;
-        }
-    }
-
     void Start()
     {
         BallRender = gameObject.GetComponent<MeshRenderer>();
@@ -58,6 +50,7 @@ public class Ball : MonoBehaviour
         materialIndex %= 2;
 
         currentColor.material = materials[materialIndex];
-        Debug.Log($"{currentColor.material} ¿‘¥œ¥Ÿ");
+        _trailRenderer.material = currentColor.material;
+        Debug.Log($"{currentColor.material}");
     }
 }
