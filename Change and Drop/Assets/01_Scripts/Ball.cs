@@ -13,13 +13,10 @@ public class Ball : MonoBehaviour
     private Rigidbody _rigidbody;
     private TrailRenderer _trailRenderer;
 
-    // 스테이지 메니저
-    public StageManager StageManager;
-
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        StageManager = GetComponent<StageManager>();
+       // StageManager = GetComponent<StageManager>();
         _trailRenderer = GetComponent<TrailRenderer>();
     }
 
@@ -31,7 +28,6 @@ public class Ball : MonoBehaviour
             _rigidbody.velocity *= MAX_SPEED / currentSpeed;
         }
     }
-
     void Start()
     {
         BallRender = gameObject.GetComponent<MeshRenderer>();
