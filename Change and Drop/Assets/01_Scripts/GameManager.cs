@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
@@ -11,13 +12,20 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     // 컵 관련
     public GameObject CupPrefeb;
-    public float rotationSpeed = 50;
+    public float rotationSpeed;
 
     // 게임 시작
-    public static bool isStart = false;
+    public static bool isStart;
+
+    public void Initialized()
+    {
+        isStart = false;
+        rotationSpeed = 50;
+    }
     void Start()
     {
-        CurrentBallCount = Random.Range(1,2);
+        Initialized();
+        CurrentBallCount = Random.Range(1, 2);
     }
     void Update()
     {
@@ -32,6 +40,11 @@ public class GameManager : SingletonBehaviour<GameManager>
         if (Input.GetKeyDown(KeyCode.DownArrow) && !isStart)
         {
             BallSpawn(CurrentBallCount);
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Initialized();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
     public void BallSpawn(int n)
@@ -54,24 +67,5 @@ public class GameManager : SingletonBehaviour<GameManager>
             }
         }
     }
-    //public int plus(int count)
-    //{
-    //    int CurrentBallCount += count;
-    //    return CurrentBallCount;
-    //}
-    //public int minus(int count)
-    //{
-    //    int CurrentBallCount -= count;
-    //    return CurrentBallCount;
-    //}
-    //public int multiple(int count)
-    //{
-    //    int CurrentBallCount *= count;
-    //    return CurrentBallCount;
-    //}
-    //public int division(int count)
-    //{
-    //    int CurrentBallCount /= count;
-    //    return CurrentBallCount;
-    //}
+ 
 }

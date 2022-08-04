@@ -8,25 +8,15 @@ public class Block : MonoBehaviour
     public Renderer BlockRender { get; private set; } // 블럭색상 설정
 
     public int CalculateNum; // 곱할 숫자
-    public int TriggerNum; // 부딛힌 숫자
-    ParticleSystem m_System;
-
 
     void Start()
     {
         BlockRender = gameObject.GetComponent<MeshRenderer>();
-        m_System = GetComponent<ParticleSystem>();
     }
 
     void Update()
     {
-        if(TriggerNum >= CalculateNum)
-        {
-            gameObject.SetActive(false);
-            ParticleSystem.pla
-
-        }
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,10 +44,7 @@ public class Block : MonoBehaviour
                 GameManager.Instance.CurrentBallCount--;
             }
         }
-        else if (other.tag == "Ball" || gameObject.CompareTag("Bridge"))
-        {
-            TriggerNum++;
-        }
+        
     }
 
     public void Spawn(float delayTime, Transform TriggerTransform)

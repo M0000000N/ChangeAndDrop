@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7719094397302053478}
   m_Layer: 0
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,8 +55,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24de65fd20b77244b2d7bfeba04ca2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Calculate: 0
   CalculateNum: 0
+  TriggerNum: 0
+  playAura: 0
+  particleObject: {fileID: 50753778632647127, guid: bb1e0e045f9b84e4d8c65277a64f7152, type: 3}
 --- !u!23 &8431083724212936345
 MeshRenderer:
   m_ObjectHideFlags: 0
