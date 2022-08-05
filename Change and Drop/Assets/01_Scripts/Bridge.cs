@@ -32,6 +32,7 @@ public class Bridge : MonoBehaviour
             {
                 this.transform.GetChild(i).gameObject.SetActive(false);
             }
+            TriggerNum = 0;
         }
     }
     private void OnTriggerEnter(Collider other)
