@@ -1,6 +1,0 @@
-sceneSetups:
-- path: Assets/Prefebs/Simple Bicycle Physics/Scenes/Ragdoll Setup/MTBRider3 Ragdoll
-    Setup.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
