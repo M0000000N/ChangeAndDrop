@@ -5,24 +5,19 @@ using TMPro;
 
 public class Bridge : MonoBehaviour
 {
-    public int CalculateNum; // ���� ����
+    [SerializeField] int CalculateNum; // 통과 갯수
+    [SerializeField] TextMeshProUGUI blockText;
+    [SerializeField] ParticleSystem particleObject;
 
-    private int TriggerNum = 0; // �ε��� ����
-    public ParticleSystem particleObject;
+    private int TriggerNum = 0; // 충돌한 수
     private Animator bridgeAnim;
-    private TextMeshPro blockText;
-    private void Awake()
-    {
-        blockText = GetComponentInChildren<TextMeshPro>();
-    }
+
     void Start()
     {
-        particleObject = GetComponentInChildren<ParticleSystem>();
         bridgeAnim = GetComponent<Animator>();
-        blockText.text += CalculateNum;
+        blockText.text = CalculateNum.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (TriggerNum >1 && TriggerNum < CalculateNum)
@@ -32,7 +27,6 @@ public class Bridge : MonoBehaviour
         if (TriggerNum == CalculateNum)
         {
             particleObject.Play();
-            // BridgeComponent.SetActive(false);
             for (int i = 1; i < this.transform.childCount; i++)
             {
                 this.transform.GetChild(i).gameObject.SetActive(false);
@@ -42,7 +36,7 @@ public class Bridge : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Ball" || gameObject.CompareTag("Bridge"))
+        if (other.tag == "Ball")
         {
             TriggerNum++;
         }

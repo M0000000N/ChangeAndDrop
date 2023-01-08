@@ -5,47 +5,44 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     // 공관련
-    [SerializeField] Material[] materials; 
-    public Renderer BallRender { get; private set; } // 공색상 설정
-    private int materialIndex = 0;
-
     public float MAX_SPEED = 3f;
-    private Rigidbody _rigidbody;
-    private TrailRenderer _trailRenderer;
+    public int materialIndex = 0; // 0:노랑, 1: 보라
+    [SerializeField] Material[] materials; 
+
+    private Renderer ballColor;
+    private TrailRenderer trailColor;
+    private Rigidbody rigidbody;
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _trailRenderer = GetComponent<TrailRenderer>();
+        ballColor = GetComponent<MeshRenderer>();
+        trailColor = GetComponent<TrailRenderer>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
+    // 최대 속도 조절
     private void FixedUpdate()
     {
-        float currentSpeed = _rigidbody.velocity.magnitude;
+        float currentSpeed = rigidbody.velocity.magnitude;
         if (currentSpeed >= MAX_SPEED)
         {
-            _rigidbody.velocity *= MAX_SPEED / currentSpeed;
+            rigidbody.velocity *= MAX_SPEED / currentSpeed;
         }
     }
-    void Start()
-    {
-        BallRender = gameObject.GetComponent<MeshRenderer>();
-    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space)) // 클릭하면 공 색상 변경
         {
-            changeColor(BallRender);
+            changeColor(ballColor);
         }        
     }
 
-    void changeColor(Renderer currentColor)
+    void changeColor(Renderer _currentColor)
     {
         ++materialIndex;
         materialIndex %= 2;
-
-        currentColor.material = materials[materialIndex];
-        _trailRenderer.material = currentColor.material;
-        Debug.Log($"{currentColor.material}");
+        _currentColor.material = materials[materialIndex];
+        trailColor.material = _currentColor.material;
     }
 }

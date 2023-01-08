@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9180063500754380810}
   - component: {fileID: 3165139024357449825}
   - component: {fileID: 377700690486184531}
+  - component: {fileID: 4425125396400762293}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 6586617577216686705}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9180063500754380810
 MeshFilter:
@@ -90,11 +91,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877035172533211745}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000005, y: 1.0000005, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0000005, y: 0.01, z: 1}
+  m_Center: {x: 0, y: 0.505, z: 0}
+--- !u!114 &4425125396400762293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877035172533211745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24de65fd20b77244b2d7bfeba04ca2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CalculateNum: 0
+  blockText: {fileID: 1997732670305599491}
 --- !u!1 &934610071122878661
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +142,7 @@ RectTransform:
   m_Children:
   - {fileID: 4377699697682736614}
   m_Father: {fileID: 6586617577216686705}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -204,7 +219,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6586617577216686705}
-  - component: {fileID: 7102104539314572828}
   m_Layer: 0
   m_Name: Block
   m_TagString: Block
@@ -223,24 +237,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7993380261535638552}
   - {fileID: 3428840899764398353}
+  - {fileID: 7993380261535638552}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7102104539314572828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2645644096616700553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ed675873c42244ea057a1792877afb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CalculateNum: 0
 --- !u!1 &6690052520045771297
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +10
+  m_text: X 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e53d72d6d07253c48b4dddb813651848, type: 2}
   m_sharedMaterial: {fileID: 4496879214096137702, guid: e53d72d6d07253c48b4dddb813651848, type: 2}
@@ -315,8 +316,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

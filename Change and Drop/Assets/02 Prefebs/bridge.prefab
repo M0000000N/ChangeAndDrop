@@ -386,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CalculateNum: 0
   particleObject: {fileID: 50753778632647127, guid: bb1e0e045f9b84e4d8c65277a64f7152, type: 3}
-  BridgeComponent: {fileID: 0}
+  blockText: {fileID: 1879523010396600532}
 --- !u!65 &6622682601094446345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -987,8 +987,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
