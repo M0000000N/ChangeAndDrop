@@ -11,6 +11,7 @@ public class Bridge : MonoBehaviour
 
     private int TriggerNum = 0; // 충돌한 수
     private Animator bridgeAnim;
+    private bool isPlay;
 
     void Start()
     {
@@ -23,9 +24,12 @@ public class Bridge : MonoBehaviour
         if (TriggerNum >1 && TriggerNum < CalculateNum)
         {
             bridgeAnim.SetFloat("Blend",(float)TriggerNum/CalculateNum);
+            blockText.text = (CalculateNum - TriggerNum).ToString();
         }
-        if (TriggerNum == CalculateNum)
+        if (TriggerNum == CalculateNum && !isPlay)
         {
+            isPlay = true;
+            blockText.text = string.Empty;
             particleObject.Play();
             for (int i = 1; i < this.transform.childCount; i++)
             {

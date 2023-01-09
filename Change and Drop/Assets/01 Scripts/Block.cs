@@ -5,13 +5,25 @@ using TMPro;
 public class Block : MonoBehaviour
 {
     // 색상 관련
+    [Header("계산")]
     public int CalculateNum; // 곱할 숫자
-    public Renderer BlockRender { get; private set; } // 블럭색상 설정
     [SerializeField] TextMeshProUGUI blockText;
 
-    void Start()
+    [Header("재질")]
+    public int materialIndex; // 0:노랑, 1: 보라
+    [SerializeField] Renderer blockRender;// 블럭색상 설정
+
+    
+    private void Start()
     {
-        BlockRender = gameObject.GetComponent<MeshRenderer>();
+        if(blockRender.material.name.Equals("Yellow (Instance)"))
+        {
+            materialIndex = 0;
+        }
+        else if(blockRender.material.name.Equals("Purple (Instance)"))
+        {
+            materialIndex = 1;
+        }
         blockText.text = "X " + CalculateNum.ToString();
     }
 
@@ -19,26 +31,19 @@ public class Block : MonoBehaviour
     {
         if (other.tag == "Ball")
         {
-            Transform TriggerTransform = other.transform;
-            MeshRenderer TriggerMesh = other.gameObject.GetComponent<MeshRenderer>();
-
-            if (TriggerMesh.material.name == BlockRender.material.name)
+            Ball ball = other.GetComponent<Ball>();
+            if (ball.materialIndex == materialIndex)
             {
-                Destroy(other.gameObject);
-
                 for (int i = 0; i < CalculateNum; i++)
                 {
-                    Spawn(TriggerTransform);
+                   ball.Instantiate(other.transform);
                 }
+                ball.destroy();
             }
             else
             {
-                Destroy(other.gameObject);
+                ball.destroy();
             }
         }
-    }
-    public void Spawn(Transform TriggerTransform)
-    {
-        Instantiate(GameManager.Instance.BallPrefeb, TriggerTransform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
     }
 }

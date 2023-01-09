@@ -6,25 +6,22 @@ public class Box : MonoBehaviour
 {
     public int CalculateNum; // ���� ����
     private int TriggerNum = 0;
-    private Rigidbody _boxRigidbody;
+    private Rigidbody boxRigidbody;
 
     void Start()
     {
-        _boxRigidbody = GetComponent<Rigidbody>();
-    }
-
-    void Update()
-    {
-        if (TriggerNum == CalculateNum)
-        {
-            _boxRigidbody.useGravity = true;
-        }
+        boxRigidbody = GetComponent<Rigidbody>();
+        boxRigidbody.useGravity = false;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ball")
         {
             TriggerNum++;
+        }
+        if (TriggerNum >= CalculateNum)
+        {
+            boxRigidbody.useGravity = true;
         }
     }
 }

@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
-    // 傍 积己 包访
-    public GameObject BallPrefeb;
-    public Transform StartPosition;
-
     // 呐 包访
     [SerializeField] Cup[] cups;
 

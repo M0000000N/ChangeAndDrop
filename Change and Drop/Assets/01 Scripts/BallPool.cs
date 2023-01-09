@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BallPool : SingletonBehaviour<BallPool>
 {
-    public List<GameObject> ballPoolList;
-    [SerializeField] Ball ballPrefeb;
+    public Queue<GameObject> ballPoolList;
+    [SerializeField] GameObject ballPrefeb;
     private int firstSpawn = 5;
     private int firstInstantiate = 100;
+    public Transform StartPosition;
 
     void Start()
     {
@@ -15,21 +16,33 @@ public class BallPool : SingletonBehaviour<BallPool>
     }
     private void Initioalize()
     {
-        ballPoolList = new List<GameObject>();
+        ballPoolList = new Queue<GameObject>();
 
         for (int i = 0; i < firstInstantiate; i++)
         {
-            GameObject ballprefeb = Instantiate(ballPrefeb.gameObject);
+            GameObject ball = Instantiate(ballPrefeb);
+            ball.transform.position = StartPosition.position;
             if (i < firstSpawn)
             {
-                ballprefeb.SetActive(true);
+                ball.SetActive(true);
             }
             else
             {
-                ballprefeb.SetActive(false);
+                ball.SetActive(false);
             }
-            ballPoolList.Add(ballprefeb);
-            ballprefeb.transform.SetParent(this.transform);
+            ballPoolList.Enqueue(ball);
+            ball.transform.SetParent(this.transform);
+        }
+    }
+    public void More()
+    {
+        for (int i = 0; i < firstInstantiate; i++)
+        {
+            GameObject ball = Instantiate(ballPrefeb);
+            ball.transform.position = StartPosition.position;
+            ball.SetActive(false);
+            ballPoolList.Enqueue(ball);
+            ball.transform.SetParent(this.transform);
         }
     }
 }
