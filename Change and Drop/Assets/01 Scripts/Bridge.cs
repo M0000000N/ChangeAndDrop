@@ -19,11 +19,12 @@ public class Bridge : MonoBehaviour
         blockText.text = CalculateNum.ToString();
     }
 
-    void Update()
+    public void TriggerBall()
     {
-        if (TriggerNum >1 && TriggerNum < CalculateNum)
+        TriggerNum++;
+        if (TriggerNum > 1 && TriggerNum < CalculateNum)
         {
-            bridgeAnim.SetFloat("Blend",(float)TriggerNum/CalculateNum);
+            bridgeAnim.SetFloat("Blend", (float)TriggerNum / CalculateNum);
             blockText.text = (CalculateNum - TriggerNum).ToString();
         }
         if (TriggerNum == CalculateNum && !isPlay)
@@ -36,13 +37,6 @@ public class Bridge : MonoBehaviour
                 this.transform.GetChild(i).gameObject.SetActive(false);
             }
             TriggerNum = 0;
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Ball")
-        {
-            TriggerNum++;
         }
     }
 }

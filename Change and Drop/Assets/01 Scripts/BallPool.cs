@@ -5,7 +5,9 @@ using UnityEngine;
 public class BallPool : SingletonBehaviour<BallPool>
 {
     public Queue<GameObject> ballPoolList;
+    public int materialIndex = 0; // 0:³ë¶û, 1: º¸¶ó
     [SerializeField] GameObject ballPrefeb;
+
     private int firstSpawn = 5;
     private int firstInstantiate = 100;
     public Transform StartPosition;

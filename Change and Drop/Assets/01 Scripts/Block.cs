@@ -16,6 +16,7 @@ public class Block : MonoBehaviour
     
     private void Start()
     {
+        CalculateNum = Random.Range(2, 7);
         if(blockRender.material.name.Equals("Yellow (Instance)"))
         {
             materialIndex = 0;
@@ -25,25 +26,5 @@ public class Block : MonoBehaviour
             materialIndex = 1;
         }
         blockText.text = "X " + CalculateNum.ToString();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Ball")
-        {
-            Ball ball = other.GetComponent<Ball>();
-            if (ball.materialIndex == materialIndex)
-            {
-                for (int i = 0; i < CalculateNum; i++)
-                {
-                   ball.Instantiate(other.transform);
-                }
-                ball.destroy();
-            }
-            else
-            {
-                ball.destroy();
-            }
-        }
     }
 }
